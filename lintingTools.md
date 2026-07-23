@@ -16,13 +16,13 @@ Frontend Linting Guide
 
 # 1. Introduction
 
-	Modern software development involves multiple developers working on the same codebase. Without a common coding standard, the project can become difficult to read, review and maintain. Frontend linting helps enforce consistent coding practices and identifies potential issues before the code is merged.
-	This project uses ESLint for code quality checks and prettier for automatic code formatting. Together, they help maintain a clean, consistent and maintainable codebase.
+Modern software development involves multiple developers working on the same codebase. Without a common coding standard, the project can become difficult to read, review and maintain. Frontend linting helps enforce consistent coding practices and identifies potential issues before the code is merged.
+This project uses ESLint for code quality checks and prettier for automatic code formatting. Together, they help maintain a clean, consistent and maintainable codebase.
 
 # 2. What is Linting?
 
-	Linting is the process of analyzing source code to identify coding issues, enforce coding standards and improve code quality without executing the program.
-	think of linting as a grammar checker for code. Just as a grammer checker highlights spelling and grammatical mistakes before publishing a document, a linter highlights potential coding coding issues before the ocde is reviewed or deployed.
+Linting is the process of analyzing source code to identify coding issues, enforce coding standards and improve code quality without executing the program.
+think of linting as a grammar checker for code. Just as a grammer checker highlights spelling and grammatical mistakes before publishing a document, a linter highlights potential coding coding issues before the ocde is reviewed or deployed.
 
 ## Benefits
 
@@ -38,20 +38,16 @@ Frontend Linting Guide
 
 ## What is ESLint?
 
-	ESLint is an open source linting tool for javascript. It analyzes source code based on configurable rules and reports issues related to code quality, coding standards, and best practices.
+ESLint is an open source linting tool for javascript. It analyzes source code based on configurable rules and reports issues related to code quality, coding standards, and best practices.
 
 ## How ESLint works?
 
-	When ESLint is executed:
-# 1. Reads the source code
-
-# 2. Analyzes the code structure
-
-# 3. Compares the code against configured rules
-
-# 4. Reports violations as warnings or errors
-
-# 5. Automatically fixes supported issues when using the `--fix` option
+# When ESLint is executed:
+1. Reads the source code
+2. Analyzes the code structure
+3. Compares the code against configured rules
+4. Reports violations as warnings or errors
+5. Automatically fixes supported issues when using the `--fix` option
 
 
 ## Common issues detected
@@ -66,7 +62,7 @@ Frontend Linting Guide
 
 ## Example:
 
-	During a code review, a developer accidentally references an undefined variable. ESLint detects the issue before the pull request is merged, preventing a potential runtime error.
+During a code review, a developer accidentally references an undefined variable. ESLint detects the issue before the pull request is merged, preventing a potential runtime error.
 
 
 # 4. Prettier
@@ -74,8 +70,8 @@ Frontend Linting Guide
 
 ## what is prettier?
 
-	Prettier is an opinionated code formatter that automatically formats source code into a consistent style.
-	Unlike ESLint, Prettier focuses only on formatting. it does not detect code quality issues or programming mistakes.
+Prettier is an opinionated code formatter that automatically formats source code into a consistent style.
+Unlike ESLint, Prettier focuses only on formatting. it does not detect code quality issues or programming mistakes.
 
 ## What Prettier formats?
 
@@ -89,7 +85,7 @@ Frontend Linting Guide
 
 ## why use prettier?
 
-	Using a consistent formatting style:
+# Using a consistent formatting style:
 - improves readability
 - eliminates formatting discussions during code review
 - keeps the entire codebase visually consistent
@@ -97,7 +93,7 @@ Frontend Linting Guide
 
 ## Example:
 
-	Different developers may format code differently. Prettier automatically applies a consistent formatting style, ensuring the entire codebase looks uniform without manual effort.
+Different developers may format code differently. Prettier automatically applies a consistent formatting style, ensuring the entire codebase looks uniform without manual effort.
 
 
 # 5. ESLint vs Prettier
@@ -160,9 +156,8 @@ npm install -D eslint-config-prettier
 ```
 ## Why?
 
-```
 eslint-config-prettier disables ESLint formatting rules that might conflict with Prettier, allowing both tools to work together smoothly.
-```
+
 # 7. Configuration
 
 After installing ESLint and Prettier, they need to be configured according to the project's coding standards. This section explains how to initialize ESLint, configure rules, use predefined rule sets, configure Prettier, and simplify common tasks using npm scripts.
@@ -403,8 +398,9 @@ extends: [
   "js/recommended",
   "prettier"
 ]
-eslint-config-prettier disables ESLint formatting rules that overlap with Prettier, allowing both tools to work together without conflicts.
 ```
+eslint-config-prettier disables ESLint formatting rules that overlap with Prettier, allowing both tools to work together without conflicts.
+
 
 ---
 
@@ -479,18 +475,13 @@ This command formats the project using Prettier according to the settings define
 
 ## Recommended Development Workflow
 
-A typical development workflow is:
-# 1.	Write code.
-
-# 2.	Format the code using Prettier.
-
-# 3.	Run ESLint to detect coding issues.
-
-# 4.	Fix any reported warnings or errors.
-
-# 5.	Commit the changes.
-
-# 6.	Create a Pull Request.
+# A typical development workflow is:
+1.	Write code.
+2.	Format the code using Prettier.
+3.	Run ESLint to detect coding issues.
+4.	Fix any reported warnings or errors.
+5.	Commit the changes.
+6.	Create a Pull Request.
 
 Following this workflow helps reduce code review comments and ensures the codebase remains consistent.
 
@@ -541,8 +532,8 @@ Cause
 Both tools may be applying formatting rules.
 ## Solution
 
+Install and configure ``eslint-config-prettier``
 ```
-Install and configure eslint-config-prettier.
 npm install -D eslint-config-prettier
 ```
 
@@ -564,7 +555,7 @@ Verify that the expected rules are present.
 
 ---
 
-```bash
+```text
 npm Scripts Are Not Working
 ```
 Verify that the scripts exist in package.json.
