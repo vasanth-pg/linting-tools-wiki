@@ -1,16 +1,17 @@
 Frontend Linting Guide
 
 ## Table of Contents
-# 1.	Introduction
-# 2.	What is Linting?
-# 3.	ESLint
-# 4.	Prettier
-# 5.	ESLint vs Prettier
-# 6.	Installation
-# 7.	Configuration
-# 8.	Running Linting
-# 9.	Best Practices
-# 10.	Troubleshooting
+
+- [Introduction](#1-introduction)
+- [What is Linting?](#2-what-is-linting)
+- [ESLint](#3-eslint)
+- [Prettier](#4-prettier)
+- [ESLint vs Prettier](#5-eslint-vs-prettier)
+- [Installation](#6-installation)
+- [Configuration](#7-configuration)
+- [Running Linting](#8-running-linting)
+- [Best Practices](#9-best-practices)
+- [Troubleshooting](#10-troubleshooting)
 
 # 1. Introduction
 	Modern software development involves multiple developers working on the same codebase. Without a common coding standard, the project can become difficult to read, review and maintain. Frontend linting helps enforce consistent coding practices and identifies potential issues before the code is merged.
@@ -35,11 +36,11 @@ Frontend Linting Guide
 
 ## How ESLint works?
 	When ESLint is executed:
-# 1. Reads the source code
-# 2. Analyzes the code structure
-# 3. Compares the code against configured rules
-# 4. Reports violations as warnings or errors
-# 5. Automatically fixes supported issues when using the `--fix` option
+1. Reads the source code
+2. Analyzes the code structure
+3. Compares the code against configured rules
+4. Reports violations as warnings or errors
+5. Automatically fixes supported issues when using the `--fix` option
 
 ## Common issues detected
 - Unused variables
@@ -110,19 +111,19 @@ node -v
 npm -v
 ```
 If version numbers are displayed, your environment is ready.
-________________________________________
+---
 Install ESLint
 Install ESLint as a development dependency:
 ```
 npm install -D eslint
 ```
-________________________________________
+---
 Install Prettier
 Install Prettier as a development dependency:
 ```
 npm install -D prettier
 ```
-________________________________________
+---
 Install ESLint-Prettier Integration
 Install the integration package to prevent conflicts between ESLint and Prettier formatting rules:
 ```
@@ -134,7 +135,7 @@ eslint-config-prettier disables ESLint formatting rules that might conflict with
 ```
 # 7. Configuration
 After installing ESLint and Prettier, they need to be configured according to the project's coding standards. This section explains how to initialize ESLint, configure rules, use predefined rule sets, configure Prettier, and simplify common tasks using npm scripts.
-________________________________________
+---
 ## 7.1 Initialize ESLint
 Initialize ESLint by running:
 ```
@@ -146,7 +147,7 @@ The setup wizard will ask a series of questions about your project, including:
 - The framework being used (React, Vue, None, etc.)
 - The environment (Browser, Node.js, etc.)
 Once completed, ESLint generates a configuration file (for example, eslint.config.mjs) in the project root.
-________________________________________
+---
 ## 7.2 Understanding the ESLint Configuration File
 The ESLint configuration file defines how ESLint analyzes your source code.
 ## Example:
@@ -164,10 +165,11 @@ export default [
 The rules section tells ESLint which coding standards to enforce.
 ## Rule Severity
 Every ESLint rule has a severity level.
-Severity	Description
-off	Disables the rule
-warn	Reports a warning but does not fail linting
-error	Reports an error and may fail the linting process
+| Severity | Description |
+|----------|-------------|
+| off | Disables the rule |
+| warn | Reports a warning but does not fail linting |
+| error | Reports an error and may fail the linting process |
 ## Example:
 ```
 rules: {
@@ -176,7 +178,7 @@ rules: {
   "prefer-const": "error"
 }
 ```
-________________________________________
+---
 ## 7.3 Adding Custom Rules
 Projects can define their own coding standards by adding custom rules.
 ## Example:
@@ -189,13 +191,14 @@ rules: {
 }
 ```
 ## Common ESLint Rules
-Rule	Description
-no-console	Warns when console.log() is used
-no-unused-vars	Detects variables that are declared but never used
-prefer-const	Suggests using const instead of let when a variable is not reassigned
-semi	Enforces semicolon usage
-quotes	Enforces single or double quotation marks
-________________________________________
+| Rule | Description |
+|------|-------------|
+| `no-console` | Warns when `console.log()` is used |
+| `no-unused-vars` | Detects variables that are declared but never used |
+| `prefer-const` | Suggests using `const` instead of `let` when a variable is not reassigned |
+| `semi` | Enforces semicolon usage |
+| `quotes` | Enforces single or double quotation marks |
+---
 ## 7.4 Using Shareable Configurations
 Instead of defining every rule manually, ESLint allows you to reuse predefined rule sets maintained by the community. These are called Shareable Configurations.
 A shareable configuration is simply a collection of ESLint rules that can be shared across multiple projects.
@@ -205,7 +208,7 @@ Some popular shareable configurations are:
 - Google
 - Standard
 Using a shareable configuration helps teams quickly adopt consistent coding standards without manually configuring hundreds of rules.
-________________________________________
+---
 Example: ESLint Recommended
 ```
 extends: [
@@ -213,7 +216,7 @@ extends: [
 ]
 ```
 This enables ESLint's recommended set of rules.
-________________________________________
+---
 Example: Airbnb Configuration
 Install Airbnb's configuration package.
 ```
@@ -226,7 +229,7 @@ extends: [
 ]
 ```
 Airbnb provides a comprehensive set of JavaScript and React coding standards maintained by the Airbnb engineering team.
-________________________________________
+---
 How Do I Know Which Rules a Shareable Configuration Uses?
 When using a shareable configuration like Airbnb, a common question is:
 ```
@@ -236,7 +239,7 @@ You don't need to memorize the rules. There are several ways to find them.
 Option 1 – Official Documentation (Recommended)
 Most shareable configurations provide official documentation describing the rules they include and any customizations they make.
 This is the recommended approach when learning a new configuration.
-________________________________________
+---
 Option 2 – Inspect the Configuration Files
 After installation, the configuration package is available inside the node_modules directory.
 ## Example:
@@ -248,7 +251,7 @@ node_modules/
     └── rules/
 ```
 The rules folder contains the rule definitions used by that configuration. You can inspect these files to understand which rules are enabled or customized.
-________________________________________
+---
 Option 3 – Print the Final ESLint Configuration (Recommended for Debugging)
 ESLint can display the complete configuration being applied to a file.
 ```
@@ -261,7 +264,7 @@ This command combines:
 and prints the final configuration.
 For example, searching the output for no-console shows the final rule currently being applied.
 This is one of the most useful commands when troubleshooting or understanding ESLint behavior.
-________________________________________
+---
 ## 7.5 Overriding Rules
 Even when using a shareable configuration, you can customize individual rules to meet your project's requirements.
 ## Example:
@@ -282,21 +285,22 @@ In this example:
 - Airbnb provides the default coding standards.
 - The project overrides the no-console rule and changes it to a warning.
 Project-specific rules always take precedence over rules defined in a shareable configuration.
-________________________________________
+---
 ## 7.6 Plugins
 Plugins extend ESLint by adding rules for specific languages, frameworks, or libraries.
 ## Common plugins include:
-Plugin	Purpose
-eslint-plugin-react	Adds React-specific linting rules
-eslint-plugin-react-hooks	Validates proper use of React Hooks
-eslint-plugin-import	Checks import and export statements
-eslint-plugin-jsx-a11y	Improves accessibility in JSX
+| Plugin | Purpose |
+|--------|---------|
+| `eslint-plugin-react` | Adds React-specific linting rules |
+| `eslint-plugin-react-hooks` | Validates proper use of React Hooks |
+| `eslint-plugin-import` | Checks import and export statements |
+| `eslint-plugin-jsx-a11y` | Improves accessibility in JSX |
 Example installation:
 ```
 npm install -D eslint-plugin-react
 ```
 Plugins are then added to the ESLint configuration file to enable their rules.
-________________________________________
+---
 ## 7.7 Configure Prettier
 Create a .prettierrc file in the project root.
 ## Example:
@@ -309,12 +313,13 @@ Create a .prettierrc file in the project root.
 }
 ```
 ## Common Prettier Options
-Option	Description
-semi	Adds semicolons at the end of statements
-singleQuote	Uses single quotes instead of double quotes
-tabWidth	Sets the number of spaces per indentation level
-printWidth	Wraps lines longer than the specified width
-________________________________________
+| Option | Description |
+|--------|-------------|
+| `semi` | Adds semicolons at the end of statements |
+| `singleQuote` | Uses single quotes instead of double quotes |
+| `tabWidth` | Sets the number of spaces per indentation level |
+| `printWidth` | Wraps lines longer than the specified width |
+---
 ## 7.8 Prevent ESLint and Prettier Conflicts
 ESLint and Prettier may sometimes apply different formatting rules.
 To prevent conflicts, install:
@@ -329,7 +334,7 @@ extends: [
 ]
 eslint-config-prettier disables ESLint formatting rules that overlap with Prettier, allowing both tools to work together without conflicts.
 ```
-________________________________________
+---
 ## 7.9 Adding npm Scripts
 To simplify running ESLint and Prettier, add the following scripts to the scripts section of package.json.
 ```
@@ -342,16 +347,15 @@ To simplify running ESLint and Prettier, add the following scripts to the script
 }
 ```
 You can now use the following commands:
-Command	Description
-```
-npm run lint	Checks the project for linting issues
-npm run lint:fix	Automatically fixes supported ESLint issues
-npm run format	Formats the project using Prettier
-```
+| Command | Description |
+|---------|-------------|
+| `npm run lint` | Checks the project for linting issues |
+| `npm run lint:fix` | Automatically fixes supported ESLint issues |
+| `npm run format` | Formats the project using Prettier |
 
 # 8. Running Linting
 Once ESLint and Prettier have been installed and configured, they can be used to analyze and format the project's source code.
-________________________________________
+---
 ## Check for Linting Issues
 Run the following command to analyze the project for linting issues:
 ```
@@ -366,7 +370,7 @@ src/app.js
   25:10  error    'username' is not defined           no-undef
 
 ✖ 2 problems (1 error, 1 warning)
-________________________________________
+---
 ## Automatically Fix Supported Issues
 Run:
 ```
@@ -378,24 +382,24 @@ This command automatically fixes issues that ESLint can safely correct, such as:
 - Indentation
 - Extra whitespace
 Some issues, such as unused variables or undefined variables, require manual intervention and will not be fixed automatically.
-________________________________________
+---
 ## Format the Project
 Run:
 ```
 npm run format
 ```
 This command formats the project using Prettier according to the settings defined in .prettierrc.
-________________________________________
+---
 ## Recommended Development Workflow
 A typical development workflow is:
-# 1.	Write code.
-# 2.	Format the code using Prettier.
-# 3.	Run ESLint to detect coding issues.
-# 4.	Fix any reported warnings or errors.
-# 5.	Commit the changes.
-# 6.	Create a Pull Request.
+1. Write code.
+2. Format the code using Prettier.
+3. Run ESLint to detect coding issues.
+4. Fix any reported warnings or errors.
+5. Commit the changes.
+6. Create a Pull Request.
 Following this workflow helps reduce code review comments and ensures the codebase remains consistent.
-________________________________________
+---
 # 9. Best Practices
 Following these best practices helps maintain a consistent and high-quality codebase.
 - Run npm run lint before creating a Pull Request.
@@ -406,7 +410,7 @@ Following these best practices helps maintain a consistent and high-quality code
 - Install the ESLint and Prettier VS Code extensions for real-time feedback.
 - Review new ESLint rules before enabling them for the entire project.
 - Avoid unnecessary custom rules unless required by the project.
-________________________________________
+---
 # 10. Troubleshooting
 ESLint Command Not Found
 ## Problem
@@ -418,13 +422,13 @@ Ensure ESLint is installed.
 ```
 npm install -D eslint
 ```
-________________________________________
+---
 Prettier Is Not Formatting Code
 ## Possible Causes
 - Prettier is not installed.
 - The .prettierrc file is missing.
 - The VS Code Prettier extension is not installed or enabled.
-________________________________________
+---
 ESLint and Prettier Reporting Different Formatting
 Cause
 Both tools may be applying formatting rules.
@@ -433,7 +437,7 @@ Both tools may be applying formatting rules.
 Install and configure eslint-config-prettier.
 npm install -D eslint-config-prettier
 ```
-________________________________________
+---
 Rules Are Not Being Applied
 ## Possible Causes
 - Incorrect ESLint configuration.
@@ -445,7 +449,7 @@ Print the active configuration:
 npx eslint --print-config src/index.js
 ```
 Verify that the expected rules are present.
-________________________________________
+---
 ```
 npm Scripts Are Not Working
 ```
