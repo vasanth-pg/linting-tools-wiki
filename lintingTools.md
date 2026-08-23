@@ -518,7 +518,9 @@ npm install -D eslint
 
 ---
 
+```text
 Prettier Is Not Formatting Code
+```
 ## Possible Causes
 
 - Prettier is not installed.
@@ -526,8 +528,9 @@ Prettier Is Not Formatting Code
 - The VS Code Prettier extension is not installed or enabled.
 
 ---
-
+```text
 ESLint and Prettier Reporting Different Formatting
+```
 Cause
 Both tools may be applying formatting rules.
 ## Solution
